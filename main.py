@@ -48,16 +48,10 @@ def main() -> str:
     for geo in RG:
         print(geo)
         url = URL_BEGIN + geo + URL_END
-        print(url)
         r = requests.get(url, HEADERS).text
         soup = bs(r, 'html.parser')
-        print(soup)
         try:
-            print('exit')
-            count = soup.find('span', class_='ButtonWithLoader__content')
-            print(count)
             count = soup.find('span', class_='ButtonWithLoader__content').text
-            print(count)
             numb = re.sub('\D', '', count)
             print(geo, numb)
             REGIONS[geo] = int(numb)
@@ -114,7 +108,7 @@ if __name__ == '__main__':
         m = time_now.minute
         d = time_now.date().strftime("%d")
         print(f'check time {h}:{m}')
-        if m in range(0, 30) and h == 8 or m in range(0, 59) and h == 18:
+        if m in range(0, 30) and h == 8 or m in range(0, 59) and h == 19:
             print(f'start script {d}-{h}:{m}')
             message_bot()
             time.sleep(32400)
