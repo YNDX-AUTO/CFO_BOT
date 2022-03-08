@@ -46,7 +46,6 @@ def main() -> str:
     copy_base = copy.deepcopy(REGIONS)
     copy_day_base = copy.deepcopy(day_base)
     for geo in RG:
-        print(geo)
         url = URL_BEGIN + geo + URL_END
         r = requests.get(url, HEADERS).text
         soup = bs(r, 'html.parser')
@@ -57,7 +56,7 @@ def main() -> str:
             REGIONS[geo] = int(numb)
         except AttributeError:
             print(f'{geo} not accessable')
-        time.sleep(14)
+        time.sleep(24)
     all_base_count = [x for x in list(REGIONS.values()) if x is not None]
     sum_base_count = sum(all_base_count)
     day_base['base'] = sum_base_count
