@@ -51,6 +51,7 @@ def main() -> str:
         soup = bs(r, 'html.parser')
         try:
             count = soup.find('span', class_='ButtonWithLoader__content').text
+            print(count)
             numb = re.sub('\D', '', count)
             print(geo, numb)
             REGIONS[geo] = int(numb)
