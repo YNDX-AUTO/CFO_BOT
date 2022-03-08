@@ -50,8 +50,11 @@ def main() -> str:
         r = requests.get(url, HEADERS).text
         soup = bs(r, 'html.parser')
         try:
+            print('p1')
             count = soup.find('span', class_='ButtonWithLoader__content').text
+            print(count)
             numb = re.sub('\D', '', count)
+            print(numb)
             REGIONS[geo] = int(numb)
         except AttributeError:
             print(f'{geo} not accessable')
@@ -106,7 +109,7 @@ if __name__ == '__main__':
         m = time_now.minute
         d = time_now.date().strftime("%d")
         print(f'check time {h}:{m}')
-        if m in range(0, 30) and h == 8 or m in range(0, 30) and h == 18:
+        if m in range(0, 30) and h == 8 or m in range(0, 40) and h == 18:
             print(f'start script {d}-{h}:{m}')
             message_bot()
             time.sleep(32400)
