@@ -48,8 +48,10 @@ def main() -> str:
     for geo in RG:
         print(geo)
         url = URL_BEGIN + geo + URL_END
+        print(url)
         r = requests.get(url, HEADERS).text
         soup = bs(r, 'html.parser')
+        print(soup)
         try:
             print('exit')
             count = soup.find('span', class_='ButtonWithLoader__content')
