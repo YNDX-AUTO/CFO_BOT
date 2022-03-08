@@ -62,7 +62,7 @@ def main() -> str:
     try:
         diff_in_total_base = day_base['base'] - copy_day_base['base']
     except TypeError:
-        pass
+        diff_in_total_base = 0
     regions_with_max_dif = count_diff_for_regions(copy_base, REGIONS)
     if regions_with_max_dif:
         message_info = f'База ЦФО: {sum_base_count} ({diff_in_total_base})\n' \
