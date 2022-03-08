@@ -50,15 +50,13 @@ def main() -> str:
         r = requests.get(url, HEADERS).text
         soup = bs(r, 'html.parser')
         try:
-            print('p1')
             count = soup.find('span', class_='ButtonWithLoader__content').text
-            print(count)
             numb = re.sub('\D', '', count)
-            print(numb)
+            print(geo, numb)
             REGIONS[geo] = int(numb)
         except AttributeError:
             print(f'{geo} not accessable')
-        time.sleep(8)
+        time.sleep(14)
     all_base_count = [x for x in list(REGIONS.values()) if x is not None]
     sum_base_count = sum(all_base_count)
     day_base['base'] = sum_base_count
