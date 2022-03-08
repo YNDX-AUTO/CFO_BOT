@@ -59,7 +59,10 @@ def main() -> str:
     all_base_count = [x for x in list(REGIONS.values()) if x is not None]
     sum_base_count = sum(all_base_count)
     day_base['base'] = sum_base_count
-    diff_in_total_base = day_base['base'] - copy_day_base['base']
+    try:
+        diff_in_total_base = day_base['base'] - copy_day_base['base']
+    except TypeError:
+        pass
     regions_with_max_dif = count_diff_for_regions(copy_base, REGIONS)
     if regions_with_max_dif:
         message_info = f'База ЦФО: {sum_base_count} ({diff_in_total_base})\n' \
