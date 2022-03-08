@@ -46,10 +46,12 @@ def main() -> str:
     copy_base = copy.deepcopy(REGIONS)
     copy_day_base = copy.deepcopy(day_base)
     for geo in RG:
+        print(geo)
         url = URL_BEGIN + geo + URL_END
         r = requests.get(url, HEADERS).text
         soup = bs(r, 'html.parser')
         try:
+            print('exit')
             count = soup.find('span', class_='ButtonWithLoader__content').text
             print(count)
             numb = re.sub('\D', '', count)
