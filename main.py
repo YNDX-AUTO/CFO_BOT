@@ -52,6 +52,8 @@ def main() -> str:
         soup = bs(r, 'html.parser')
         try:
             print('exit')
+            count = soup.find('span', class_='ButtonWithLoader__content')
+            print(count)
             count = soup.find('span', class_='ButtonWithLoader__content').text
             print(count)
             numb = re.sub('\D', '', count)
@@ -110,7 +112,7 @@ if __name__ == '__main__':
         m = time_now.minute
         d = time_now.date().strftime("%d")
         print(f'check time {h}:{m}')
-        if m in range(0, 30) and h == 8 or m in range(0, 50) and h == 18:
+        if m in range(0, 30) and h == 8 or m in range(0, 59) and h == 18:
             print(f'start script {d}-{h}:{m}')
             message_bot()
             time.sleep(32400)
