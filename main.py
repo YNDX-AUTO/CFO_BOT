@@ -46,11 +46,13 @@ def main() -> str:
     copy_base = copy.deepcopy(REGIONS)
     copy_day_base = copy.deepcopy(day_base)
     for geo in RG:
+        if geo in ['tulskaya_oblast', 'orlovskaya_oblast', 'ryazanskaya_oblast', 'kurskaya_oblast']
+            time.sleep(6)
         url = URL_BEGIN + geo + URL_END
         r = requests.get(url, HEADERS).text
         soup = bs(r, 'html.parser')
         try:
-            time.sleep(7)
+            time.sleep(17)
             count = soup.find('span', class_='ButtonWithLoader__content').text
             numb = re.sub('\D', '', count)
             print(geo, numb)
