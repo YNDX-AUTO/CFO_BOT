@@ -46,7 +46,7 @@ def main() -> str:
     copy_base = copy.deepcopy(REGIONS)
     copy_day_base = copy.deepcopy(day_base)
     for geo in RG:
-        if geo in ['tulskaya_oblast', 'orlovskaya_oblast', 'ryazanskaya_oblast', 'kurskaya_oblast']
+        if geo in ['tulskaya_oblast', 'orlovskaya_oblast', 'ryazanskaya_oblast', 'kurskaya_oblast']:
             time.sleep(6)
         url = URL_BEGIN + geo + URL_END
         r = requests.get(url, HEADERS).text
@@ -110,7 +110,7 @@ if __name__ == '__main__':
         m = time_now.minute
         d = time_now.date().strftime("%d")
         print(f'check time {h}:{m}')
-        if m in range(0, 59) and h == 9 or m in range(0, 59) and h == 19:
+        if m in range(0, 59) and h == 13 or m in range(0, 59) and h == 19:
             print(f'start script {d}-{h}:{m}')
             message_bot()
             time.sleep(32400)
